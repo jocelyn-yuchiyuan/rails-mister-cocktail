@@ -1,0 +1,13 @@
+<div class="container">
+  <h1>Add description</h1>
+
+    <p>What description would you like to add?</p>
+    <%= simple_form_for [ @cocktail, @dose ] do |f| %>
+    <%= f.association :ingredient %>
+    <%= f.input :description %>
+
+    <%= f.submit class: 'btn btn-primary' %>
+    <% end %>
+
+
+</div>
