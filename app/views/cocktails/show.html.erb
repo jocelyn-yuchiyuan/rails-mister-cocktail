@@ -1,37 +1,32 @@
+<div style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://cdn.pixabay.com/photo/2016/11/29/05/45/astronomy-1867616_1280.jpg);">
+  <h1><%= @cocktail.name %></h1>
+  <div class="card-detail m-2 p-5">
+    <%= cl_image_tag @cocktail.image.key, height: 300, width: 200, crop: :fill %>
+    <div class="card-detail-infos m-2 p-5">
+      <h2>Ingredient</h2>
+      <div>
+      <% @cocktail.doses.each do |dose| %>
+        <div class="card-detail-dose m-2 p-3">
+          <p><%= dose.ingredient.name%></p>
+          <p><%= dose.description%></p>
+          <%=link_to dose_path(dose), method: :delete,data: { confirm: "Are you sure?" },class:"btn  btn-primary" do%>
+            🗑
+          <% end %>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
 
-<div class="banner" style="background:#D6EAED">
-
-    <h2><%= @cocktail.name %></h1>
-
-
-</div>
-
-
-<div class="container">
-
-    <%= cl_image_tag @cocktail.image.key, height: 300, width: 400, crop: :fill %>
-
-            <h5>Ingredient</h5>
-
-            <% @cocktail.doses.each do |dose| %>
-
-              <p><%= dose.ingredient.name%></p>
-              <p><%= dose.description%></p>
-
-              <%=link_to dose_path(dose), method: :delete,data: { confirm: "Are you sure?" },class:"btn  btn-rimary" do%>
-              🗑
-               <% end %>
-            <% end %>
-
-    <%=link_to cocktail_path(@cocktail), method: :delete,data: { confirm: "Are you sure?" } ,class:"btn  btn-primary" do%>
-    delete cocktail
-    <%end %>
-    <%= link_to  cocktails_path,class:"btn btn-primary" do %>
-     ⏎
-    <%end %>
-    <%= link_to new_cocktail_dose_path(@cocktail) ,class:"btn  btn-primary" do %>
-    Add description
-    <%end %>
+  <%=link_to cocktail_path(@cocktail), method: :delete,data: { confirm: "Are you sure?" } ,class:"btn  btn-primary" do%>
+  delete cocktail
+  <%end %>
+  <%= link_to  cocktails_path,class:"btn btn-primary" do %>
+   ⏎
+  <%end %>
+  <%= link_to new_cocktail_dose_path(@cocktail) ,class:"btn  btn-primary" do %>
+  Add description
+  <%end %>
 
 </div>
 
