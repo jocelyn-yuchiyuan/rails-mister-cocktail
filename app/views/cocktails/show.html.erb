@@ -1,11 +1,23 @@
 
+<div class="banner" style="background:#D6EAED">
+
+    <h2><%= @cocktail.name %></h1>
+
+
+</div>
+
+
 <div class="container">
 
-    <h2><%= @cocktail.name %></h2>
+    <%= cl_image_tag @cocktail.image.key, height: 300, width: 400, crop: :fill %>
+
             <h5>Ingredient</h5>
+
             <% @cocktail.doses.each do |dose| %>
+
               <p><%= dose.ingredient.name%></p>
               <p><%= dose.description%></p>
+
               <%=link_to dose_path(dose), method: :delete,data: { confirm: "Are you sure?" },class:"btn  btn-rimary" do%>
               🗑
                <% end %>
